@@ -67,10 +67,11 @@ const Transaction = {
 };
 
 const DOM = {
-  transactionsContainer: document.querySelector("#data-table  tbody"),
+  transactionsContainer: document.querySelector("#data-table tbody"),
+
   addTransaction(transaction, index) {
     const tr = document.createElement("tr");
-    (tr.innerHTML = DOM.innerHTMLTransaction(transaction)), index;
+    tr.innerHTML = DOM.innerHTMLTransaction(transaction, index);
     tr.dataset.index = index;
 
     DOM.transactionsContainer.appendChild(tr);
@@ -114,7 +115,7 @@ const DOM = {
 const Utils = {
   formatAmount(value) {
     value = Number(value) * 100;
-    return value;
+    return Math.round(value);
   },
 
   formatDate(date) {
